@@ -29,15 +29,6 @@ class LocalStorageBloc extends Bloc<LocalStorageEvent, LocalStorageState>
       }
     }
 
-    if (cache.length > 6) {
-      cache = cache.sublist(cache.length - 6);
-      print(
-          "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-      print(cache.length);
-      print(
-          "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-    }
-
     if (!isPresent) {
       cache.insert(0, newModel);
       // cache.add(newModel);
@@ -47,6 +38,15 @@ class LocalStorageBloc extends Bloc<LocalStorageEvent, LocalStorageState>
       cache.insert(0, newModel);
       // cache.add(newModel);
       print("updated the cache ${cache.length}");
+    }
+
+    if (cache.length > 6) {
+      cache = cache.sublist(0, 6);
+      print(
+          "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+      print(cache.length);
+      print(
+          "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
     }
 
     emit(LocalStorageState(cache: cache));

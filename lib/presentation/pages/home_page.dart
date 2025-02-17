@@ -61,6 +61,9 @@ class _HomePageState extends State<HomePage> {
         //     List<CacheModel> cache =
         //         context.read<LocalStorageBloc>().state.cache;
         //     print("👀 ${cache.length}");
+        //     for (int i = 0; i < cache.length; i++) {
+        //       print(cache[i].searchTerm);
+        //     }
         //   },
         // ),
         body: Padding(
@@ -154,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(child: Text("No Data"));
+                    return Center(child: Text("Loading..."));
                   }
                 },
               ),

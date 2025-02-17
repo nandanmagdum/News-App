@@ -55,15 +55,15 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
     print("CODE REACHED HERE");
 
     // chech if search term is alreay present in cache
-    CacheModel hydratedCacheModel = localStorageBloc.state.cache.firstWhere(
-        (item) => item.searchTerm == searchTerm,
-        orElse: () =>
-            CacheModel(searchTerm: "error100", totalResults: -1, news: []));
-    if (hydratedCacheModel.searchTerm != "error100" ||
-        hydratedCacheModel.totalResults != -1) {
-      emit(CacheSuccessState(cacheModel: hydratedCacheModel));
-      return;
-    }
+    // CacheModel hydratedCacheModel = localStorageBloc.state.cache.firstWhere(
+    //     (item) => item.searchTerm == searchTerm,
+    //     orElse: () =>
+    //         CacheModel(searchTerm: "error100", totalResults: -1, news: []));
+    // if (hydratedCacheModel.searchTerm != "error100" ||
+    //     hydratedCacheModel.totalResults != -1) {
+    //   emit(CacheSuccessState(cacheModel: hydratedCacheModel));
+    //   return;
+    // }
 
     // cache
     if (event.isFromCache ?? false) {

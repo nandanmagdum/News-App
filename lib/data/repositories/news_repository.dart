@@ -9,7 +9,6 @@ import 'package:news_app/data/models/news_model.dart';
 class NewsRepository {
   static Future<CacheModel> getHomePageNews(
       {required String? searchTerm, required int page}) async {
-    print("Function is called : searchTerm : ${searchTerm} page -> ${page}");
     try {
       String url = (searchTerm == null || searchTerm.trim().isEmpty)
           ? "${ApiConstants.defaultUrl}&page=$page"
