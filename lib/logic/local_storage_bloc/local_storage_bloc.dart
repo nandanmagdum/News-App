@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:news_app/data/models/cache_model.dart';
 
@@ -9,7 +8,7 @@ part 'local_storage_state.dart';
 
 class LocalStorageBloc extends Bloc<LocalStorageEvent, LocalStorageState>
     with HydratedMixin {
-  LocalStorageBloc() : super(LocalStorageState(cache: <CacheModel>[])) {
+  LocalStorageBloc() : super(const LocalStorageState(cache: <CacheModel>[])) {
     hydrate();
     on<AddCacheEvent>(addCacheEvent);
   }

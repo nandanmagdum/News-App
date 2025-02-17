@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/data/models/cache_model.dart';
 import 'package:news_app/data/models/news_model.dart';
 import 'package:news_app/logic/cache_bloc/cache_bloc.dart';
-import 'package:news_app/logic/local_storage_bloc/local_storage_bloc.dart';
 import 'package:news_app/presentation/widgets/news_tile.dart';
 import 'package:news_app/presentation/widgets/search_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         if (scrollController.position.maxScrollExtent ==
                 scrollController.offset &&
             state is CacheSuccessState &&
-            ((state as CacheSuccessState).allResultsFetched != true)) {
+            ((state).allResultsFetched != true)) {
           incrementPage();
         }
       },
@@ -58,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -67,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                   searchController: searchController,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               BlocConsumer<CacheBloc, CacheState>(
@@ -79,11 +77,11 @@ class _HomePageState extends State<HomePage> {
                 },
                 builder: (context, state) {
                   if (state is CacheLoadingState && page == 1) {
-                    return StaticContainer(
+                    return const StaticContainer(
                       isLoading: true,
                     );
                   } else if (state is CacheErrorState) {
-                    String errorMessage = "${state.error}";
+                    String errorMessage = state.error;
                     if (state.errorCode.contains("429")) {
                       errorMessage =
                           " 🚨 Sorry for inconvinience \nMaximum API Limit reached, please change the API KEY from api_constants.dart file 😔";
@@ -93,12 +91,12 @@ class _HomePageState extends State<HomePage> {
                       message: errorMessage,
                     );
                   } else if (state is CacheSuccessState) {
-                    final successState = (state as CacheSuccessState);
+                    final successState = state;
                     final List<NewsModel> newsList =
                         successState.cacheModel.news;
                     final totalResults = state.cacheModel.totalResults;
                     if (newsList.isEmpty) {
-                      return StaticContainer(
+                      return const StaticContainer(
                         message: "No news found matching with this search",
                       );
                     }
@@ -114,8 +112,8 @@ class _HomePageState extends State<HomePage> {
                               : Center(
                                   child: (state.allResultsFetched ||
                                           newsList.length == totalResults)
-                                      ? Padding(
-                                          padding: const EdgeInsets.symmetric(
+                                      ? const Padding(
+                                          padding: EdgeInsets.symmetric(
                                             vertical: 10,
                                           ),
                                           child: Row(
@@ -132,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                                             ],
                                           ),
                                         )
-                                      : CircularProgressIndicator(),
+                                      : const CircularProgressIndicator(),
                                 );
                         },
                         separatorBuilder: (context, index) {
@@ -141,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   } else {
-                    return Center(child: Text("Loading..."));
+                    return const Center(child: Text("Loading..."));
                   }
                 },
               ),

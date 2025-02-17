@@ -11,7 +11,7 @@ class NewsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         bottom: 10,
       ),
       decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class NewsTile extends StatelessWidget {
                     ),
                   ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Padding(
@@ -59,7 +59,7 @@ class NewsTile extends StatelessWidget {
             ),
             child: Text(
               newsModel.title ?? "",
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -68,7 +68,7 @@ class NewsTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Padding(
@@ -76,7 +76,7 @@ class NewsTile extends StatelessWidget {
             child: Text(
               "From: ${newsModel.source?.name}",
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
@@ -94,7 +94,7 @@ class NewsTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Padding(
@@ -112,7 +112,7 @@ class NewsTile extends StatelessWidget {
                     UrlLauncher.openUrlInBrowser(
                         link: newsModel.url.toString());
                   },
-                  child: Text(
+                  child: const Text(
                     "Read more",
                     style: TextStyle(
                       color: Colors.blue,

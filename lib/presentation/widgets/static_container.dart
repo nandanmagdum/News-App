@@ -16,7 +16,7 @@ class StaticContainer extends StatelessWidget {
       width: double.infinity,
       child: Center(
         child: (isLoading)
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Text(
                 textAlign: TextAlign.center,
                 message,

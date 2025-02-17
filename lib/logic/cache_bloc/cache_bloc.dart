@@ -29,7 +29,7 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
       }
       CacheModel localCacheModel = localStorageBloc.state.cache
           .firstWhere((item) => item.searchTerm == event.query);
-      if (localCacheModel.news.length != 0) {
+      if (localCacheModel.news.isNotEmpty) {
         emit(CacheSuccessState(cacheModel: localCacheModel));
         localStorageBloc.add(AddCacheEvent(cacheModel: localCacheModel));
         return;

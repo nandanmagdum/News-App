@@ -15,9 +15,9 @@ class ApiConstants {
 
   // BASE URL
   static const baseUrl =
-      "https://newsapi.org/v2/everything?apiKey=${apiKey}&pageSize=${pageSize}";
+      "https://newsapi.org/v2/everything?apiKey=$apiKey&pageSize=$pageSize";
 
   // DEFAULT URL
   static const defaultUrl =
-      "https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&pageSize=${pageSize}";
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=$apiKey&pageSize=$pageSize";
 }

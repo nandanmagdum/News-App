@@ -59,7 +59,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                       .closeView(widget.searchController.text);
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                 ),
               )
@@ -81,7 +81,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                   onChanged: (_) {
                     controller.openView();
                     if (widget.searchController.text.isEmpty) {
-                      context.read<CacheBloc>().add(InitialNewsFetchEvent(
+                      context.read<CacheBloc>().add(const InitialNewsFetchEvent(
                             isFromCache: true,
                             query: null,
                           ));
@@ -107,13 +107,13 @@ class _AppSearchBarState extends State<AppSearchBar> {
                         }
                         
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.search,
                       ),
                     ),
                   ]);
             },
-            viewConstraints: BoxConstraints(maxHeight: 350),
+            viewConstraints: const BoxConstraints(maxHeight: 350),
             suggestionsBuilder:
                 (BuildContext context, SearchController controller) {
               final list = List.from(state.cache
@@ -121,7 +121,7 @@ class _AppSearchBarState extends State<AppSearchBar> {
                   .toList());
               return List.generate(list.length, (int index) {
                 return ListTile(
-                  trailing: Icon(Icons.history),
+                  trailing: const Icon(Icons.history),
                   title: Text(list[index].searchTerm),
                   onTap: () {
                     setState(() {
