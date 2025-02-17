@@ -56,13 +56,13 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            List<CacheModel> cache =
-                context.read<LocalStorageBloc>().state.cache;
-            print("👀 ${cache.length}");
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     List<CacheModel> cache =
+        //         context.read<LocalStorageBloc>().state.cache;
+        //     print("👀 ${cache.length}");
+        //   },
+        // ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
