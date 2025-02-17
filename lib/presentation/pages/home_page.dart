@@ -21,7 +21,6 @@ class _HomePageState extends State<HomePage> {
   int page = 1;
   void incrementPage() {
     page++;
-    print("😂 $page");
     context.read<CacheBloc>().add(
           InitialNewsFetchEvent(
             query: searchController.text.isEmpty ? null : searchController.text,
@@ -41,8 +40,6 @@ class _HomePageState extends State<HomePage> {
             state is CacheSuccessState &&
             ((state as CacheSuccessState).allResultsFetched != true)) {
           incrementPage();
-        } else {
-          print("API NOT CALLEDING (!*@#&DSFLKKSDHFLKJSDHFKJHSDLKFSDJKFLSDF)");
         }
       },
     );
@@ -60,9 +57,7 @@ class _HomePageState extends State<HomePage> {
         //   onPressed: () {
         //     List<CacheModel> cache =
         //         context.read<LocalStorageBloc>().state.cache;
-        //     print("👀 ${cache.length}");
         //     for (int i = 0; i < cache.length; i++) {
-        //       print(cache[i].searchTerm);
         //     }
         //   },
         // ),
@@ -123,8 +118,6 @@ class _HomePageState extends State<HomePage> {
                         itemCount: newsList.length + 1,
                         itemBuilder: (context, index) {
                           // return NewsTile(newsModel: news);
-                          print(
-                              "🙈 ${newsList.length} and total results = ${totalResults}");
                           return (index < newsList.length)
                               ? NewsTile(newsModel: newsList[index])
                               : Center(

@@ -1,5 +1,6 @@
 class ApiConstants {
   // API Key
+  
   // static const apiKey = "c2a0433227924ab6b283c615b23d5cb4";
 
   // static const apiKey = "4a7bc2e33f8d44f59994b6ce43528f82";
@@ -10,7 +11,7 @@ class ApiConstants {
 
   static const apiKey = "8e9843427b6c4c06b5266b375bd860b6";
 
-  static const pageSize = 5;
+  static const pageSize = 20;
 
   // BASE URL
   static const baseUrl =

@@ -32,8 +32,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
   //     CacheModel cacheModel = await NewsRepository.getHomePageNews(
   //         searchTerm: searchTerm, page: page);
   //     updatedCacheModel.news.addAll(cacheModel.news);
-  //     print("⭐️");
-  //     print(updatedCacheModel.news.length);
   //     emit(CacheSuccessState(
   //         cacheModel: CacheModel(
   //       searchTerm: updatedCacheModel.searchTerm,
@@ -50,9 +48,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
       InitialNewsFetchEvent event, Emitter<CacheState> emit) async {
     String? searchTerm = event.query;
     int page = event.page;
-    print("***********");
-    print("Page Number : ${page}");
-    print("CODE REACHED HERE");
 
     // chech if search term is alreay present in cache
     // CacheModel hydratedCacheModel = localStorageBloc.state.cache.firstWhere(
@@ -68,7 +63,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
     // cache
     if (event.isFromCache ?? false) {
       if (searchTerm == null && searchTerm!.isEmpty) {
-        print("Code reached here");
         CacheModel localCacheModel = localStorageBloc.state.cache.firstWhere(
             (item) => item.searchTerm == "" || item.searchTerm.isEmpty);
         emit(CacheSuccessState(cacheModel: localCacheModel));
@@ -91,7 +85,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
       updatedCacheModel = (state as CacheSuccessState).cacheModel;
     }
 
-    print("Updated News Length = ${updatedCacheModel.news.length}");
     if (page == 1) emit(CacheLoadingState());
 
     try {
@@ -102,7 +95,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
         localStorageBloc.add(AddCacheEvent(cacheModel: cacheModel));
         return;
       }
-      print("API NEWS LENGTH = ${cacheModel.news.length}");
       if (cacheModel.news.isEmpty) {
         emit(CacheSuccessState(
           cacheModel: updatedCacheModel,
@@ -117,9 +109,9 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
         totalResults: cacheModel.totalResults,
         news: [...updatedCacheModel.news, ...cacheModel.news],
       );
-      print("AFTER CONCANICATION : ${newCacheModel.news.length}");
+
       emit(CacheSuccessState(cacheModel: newCacheModel));
-      print("Successful state emited");
+
       // localStorageBloc.add(AddCacheEvent(cacheModel: updatedCacheModel));
     } catch (e) {
       emit(CacheErrorState(error: e.toString(), errorCode: e.toString()));

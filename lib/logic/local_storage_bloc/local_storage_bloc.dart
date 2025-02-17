@@ -32,34 +32,26 @@ class LocalStorageBloc extends Bloc<LocalStorageEvent, LocalStorageState>
     if (!isPresent) {
       cache.insert(0, newModel);
       // cache.add(newModel);
-      print("added new data in cahce ${cache.length}");
+
     } else {
       cache.removeAt(index);
       cache.insert(0, newModel);
       // cache.add(newModel);
-      print("updated the cache ${cache.length}");
+
     }
 
     if (cache.length > 6) {
       cache = cache.sublist(0, 6);
-      print(
-          "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-      print(cache.length);
-      print(
-          "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
     }
 
     emit(LocalStorageState(cache: cache));
-    print("Function is called FINSISH ");
   }
 
   @override
   LocalStorageState? fromJson(Map<String, dynamic> json) {
     try {
-      print("HYDRATED 2222222222");
       return LocalStorageState.fromJson(json);
     } catch (e) {
-      print("ERROR OCCURED HYDRATED: $e");
       throw Exception(e);
     }
   }
@@ -67,10 +59,8 @@ class LocalStorageBloc extends Bloc<LocalStorageEvent, LocalStorageState>
   @override
   Map<String, dynamic>? toJson(LocalStorageState state) {
     try {
-      print("HYDRATED 111111111");
       return state.toJson();
     } catch (e) {
-      print("ERRROR ZALA : $e");
       throw Exception(e);
     }
   }

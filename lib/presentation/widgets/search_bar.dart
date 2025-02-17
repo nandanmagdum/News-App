@@ -21,7 +21,6 @@ class _AppSearchBarState extends State<AppSearchBar> {
   Widget build(BuildContext context) {
     // List<CacheModel> searchTermList =
     //     context.read<LocalStorageBloc>().state.cache;
-    // print("👀 ${searchTermList.length}");
     // searchTermList.removeWhere(
     //   (item) => item.searchTerm.isEmpty,
     // );
@@ -106,7 +105,6 @@ class _AppSearchBarState extends State<AppSearchBar> {
                     FocusScope.of(context).unfocus();
                   },
                   onChanged: (_) {
-                    print("CHANGE ZALA ");
                     controller.openView();
                     if (widget.searchController.text.isEmpty) {
                       context.read<CacheBloc>().add(InitialNewsFetchEvent(

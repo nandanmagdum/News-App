@@ -1,9 +1,7 @@
 # News App
 
 ## 📌 Overview
-App made using Flutter and News API to fetch the latest news from the Internet.
-
-## 🚀 How to Set Up and Run the Project Locally
+App is made using Flutter and News API to fetch the latest news from the Internet.
 
 ### Prerequisites
 - Flutter 3
