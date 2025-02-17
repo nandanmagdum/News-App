@@ -103,8 +103,7 @@ class NewsTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  DateFormat('dd/MM/yyyy').format(DateTime.parse(
-                      newsModel.publishedAt ?? "2025-02-15T12:30:45Z")),
+                  newsModel.publishedAt.toString().substring(0, 10),
                   style: TextStyle(color: Colors.grey[700]),
                 ),
                 GestureDetector(
