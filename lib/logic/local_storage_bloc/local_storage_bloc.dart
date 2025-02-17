@@ -31,13 +31,10 @@ class LocalStorageBloc extends Bloc<LocalStorageEvent, LocalStorageState>
 
     if (!isPresent) {
       cache.insert(0, newModel);
-      // cache.add(newModel);
 
     } else {
       cache.removeAt(index);
       cache.insert(0, newModel);
-      // cache.add(newModel);
-
     }
 
     if (cache.length > 6) {

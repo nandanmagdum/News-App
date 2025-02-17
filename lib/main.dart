@@ -6,7 +6,6 @@ import 'package:news_app/logic/local_storage_bloc/local_storage_bloc.dart';
 import 'package:news_app/presentation/pages/home_page.dart';
 import 'package:path_provider/path_provider.dart';
 
-// News App
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HydratedBloc.storage = await HydratedStorage.build(
@@ -27,9 +26,10 @@ class MyApp extends StatelessWidget {
           create: (context) => LocalStorageBloc(),
         ),
         BlocProvider(
-            create: (context) => CacheBloc(context.read<LocalStorageBloc>())
-            // ..add(const InitialNewsFetchEvent()),
-            ),
+          create: (context) => CacheBloc(
+            context.read<LocalStorageBloc>(),
+          ),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

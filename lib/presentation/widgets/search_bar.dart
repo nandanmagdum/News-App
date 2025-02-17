@@ -19,11 +19,6 @@ class _AppSearchBarState extends State<AppSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    // List<CacheModel> searchTermList =
-    //     context.read<LocalStorageBloc>().state.cache;
-    // searchTermList.removeWhere(
-    //   (item) => item.searchTerm.isEmpty,
-    // );
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 0,
@@ -33,19 +28,6 @@ class _AppSearchBarState extends State<AppSearchBar> {
           return SearchAnchor(
             viewHintText: "Search News...",
             viewOnSubmitted: (value) {
-              // if (value.isEmpty) {
-              //   context.read<CacheBloc>().add(
-              //         InitialNewsFetchEvent(
-              //           isFromCache: true,
-              //           query: "",
-              //         ),
-              //       );
-              //   widget.searchController.closeView(widget.searchController.text);
-              //   SystemChannels.textInput.invokeListMethod('TextInput.hide');
-              //   setState(() {});
-              //   // FocusScope.of(context).requestFocus(FocusNode());
-              //   return;
-              // }
               if (widget.searchController.text.isNotEmpty) {
                 context.read<CacheBloc>().add(
                       InitialNewsFetchEvent(
@@ -76,14 +58,6 @@ class _AppSearchBarState extends State<AppSearchBar> {
                   widget.searchController
                       .closeView(widget.searchController.text);
                   FocusScope.of(context).requestFocus(FocusNode());
-                  //  else {
-                  //   context.read<CacheBloc>().add(
-                  //       InitialNewsFetchEvent(isFromCache: true, query: ""));
-                  //   FocusScope.of(context).unfocus();
-                  //   SystemChannels.textInput.invokeMethod("TextInput.hide");
-                  //   widget.searchController
-                  //       .closeView(widget.searchController.text);
-                  // }
                 },
                 icon: Icon(
                   Icons.search,
@@ -131,30 +105,8 @@ class _AppSearchBarState extends State<AppSearchBar> {
                                     query: widget.searchController.text),
                               );
                         }
-                        // else {
-                        //   context.read<CacheBloc>().add(
-                        //         InitialNewsFetchEvent(
-                        //             isFromCache: true,
-                        //             query: widget.searchController.text),
-                        //       );
-                        // }
+                        
                       },
-                      // onChanged: (value) {
-                      //   if (debounce?.isActive ?? false) debounce?.cancel();
-                      //   debounce = Timer(const Duration(milliseconds: 1000), () {
-                      //     if (value.isNotEmpty) {
-                      //       context.read<CacheBloc>().add(
-                      //             InitialNewsFetchEvent(
-                      //               query: value,
-                      //             ),
-                      //           );
-                      //     } else {
-                      //       context.read<CacheBloc>().add(
-                      //             const InitialNewsFetchEvent(),
-                      //           );
-                      //     }
-                      //   });
-                      // },
                       icon: Icon(
                         Icons.search,
                       ),

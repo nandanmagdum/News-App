@@ -14,60 +14,19 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
     on<InitialNewsFetchEvent>(initialNewsFetchEvent);
   }
 
-  // FutureOr<void> initialNewsFetchEvent(
-  //     InitialNewsFetchEvent event, Emitter<CacheState> emit) async {
-  //   String? searchTerm = event.query;
-  //   int page = event.page;
-  //   CacheModel updatedCacheModel =
-  //       CacheModel(searchTerm: "", totalResults: 0, news: []);
-  //   if (state is CacheSuccessState) {
-  //     updatedCacheModel = CacheModel(
-  //       searchTerm: (state as CacheSuccessState).cacheModel.searchTerm,
-  //       totalResults: (state as CacheSuccessState).cacheModel.totalResults,
-  //       news: (state as CacheSuccessState).cacheModel.news,
-  //     );
-  //   }
-  //   if (page == 1) emit(CacheLoadingState());
-  //   try {
-  //     CacheModel cacheModel = await NewsRepository.getHomePageNews(
-  //         searchTerm: searchTerm, page: page);
-  //     updatedCacheModel.news.addAll(cacheModel.news);
-  //     emit(CacheSuccessState(
-  //         cacheModel: CacheModel(
-  //       searchTerm: updatedCacheModel.searchTerm,
-  //       totalResults: updatedCacheModel.totalResults,
-  //       news: updatedCacheModel.news,
-  //     )));
-  //     // localStorageBloc.add(AddCacheEvent(cacheModel: updatedCacheModel));
-  //   } catch (e) {
-  //     emit(CacheErrorState(error: e.toString()));
-  //   }
-  // }
 
   FutureOr<void> initialNewsFetchEvent(
       InitialNewsFetchEvent event, Emitter<CacheState> emit) async {
     String? searchTerm = event.query;
     int page = event.page;
 
-    // chech if search term is alreay present in cache
-    // CacheModel hydratedCacheModel = localStorageBloc.state.cache.firstWhere(
-    //     (item) => item.searchTerm == searchTerm,
-    //     orElse: () =>
-    //         CacheModel(searchTerm: "error100", totalResults: -1, news: []));
-    // if (hydratedCacheModel.searchTerm != "error100" ||
-    //     hydratedCacheModel.totalResults != -1) {
-    //   emit(CacheSuccessState(cacheModel: hydratedCacheModel));
-    //   return;
-    // }
 
-    // cache
     if (event.isFromCache ?? false) {
       if (searchTerm == null && searchTerm!.isEmpty) {
         CacheModel localCacheModel = localStorageBloc.state.cache.firstWhere(
             (item) => item.searchTerm == "" || item.searchTerm.isEmpty);
         emit(CacheSuccessState(cacheModel: localCacheModel));
       }
-      // find object from local storage bloc
       CacheModel localCacheModel = localStorageBloc.state.cache
           .firstWhere((item) => item.searchTerm == event.query);
       if (localCacheModel.news.length != 0) {
@@ -76,7 +35,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
         return;
       }
     }
-    // cache
 
     CacheModel updatedCacheModel =
         CacheModel(searchTerm: "", totalResults: 0, news: []);
@@ -112,7 +70,6 @@ class CacheBloc extends Bloc<CacheEvent, CacheState> {
 
       emit(CacheSuccessState(cacheModel: newCacheModel));
 
-      // localStorageBloc.add(AddCacheEvent(cacheModel: updatedCacheModel));
     } catch (e) {
       emit(CacheErrorState(error: e.toString(), errorCode: e.toString()));
     } finally {

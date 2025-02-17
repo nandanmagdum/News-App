@@ -53,14 +53,6 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     List<CacheModel> cache =
-        //         context.read<LocalStorageBloc>().state.cache;
-        //     for (int i = 0; i < cache.length; i++) {
-        //     }
-        //   },
-        // ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
@@ -117,7 +109,6 @@ class _HomePageState extends State<HomePage> {
                         shrinkWrap: true,
                         itemCount: newsList.length + 1,
                         itemBuilder: (context, index) {
-                          // return NewsTile(newsModel: news);
                           return (index < newsList.length)
                               ? NewsTile(newsModel: newsList[index])
                               : Center(

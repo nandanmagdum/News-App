@@ -4,8 +4,6 @@ sealed class CacheState {
   const CacheState();
 }
 
-// final class CacheInitial extends CacheState {}
-
 final class CacheLoadingState extends CacheState {}
 
 final class CacheErrorState extends CacheState {
