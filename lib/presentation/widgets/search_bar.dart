@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/data/models/cache_model.dart';
 import 'package:news_app/logic/cache_bloc/cache_bloc.dart';
 import 'package:news_app/logic/local_storage_bloc/local_storage_bloc.dart';
 

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:news_app/data/models/cache_model.dart';
 import 'package:news_app/data/models/news_model.dart';

@@ -5,14 +5,12 @@ import 'package:http/http.dart';
 import 'package:news_app/core/api_constants.dart';
 import 'package:news_app/data/models/cache_model.dart';
 import 'package:news_app/data/models/news_model.dart';
-import 'package:news_app/logic/local_storage_bloc/local_storage_bloc.dart';
 
 class NewsRepository {
   static Future<CacheModel> getHomePageNews(
       {required String? searchTerm, required int page}) async {
     print("Function is called : searchTerm : ${searchTerm} page -> ${page}");
     try {
-      
       String url = (searchTerm == null || searchTerm.trim().isEmpty)
           ? "${ApiConstants.defaultUrl}&page=$page"
           : "${ApiConstants.baseUrl}&q=$searchTerm&page=$page";
